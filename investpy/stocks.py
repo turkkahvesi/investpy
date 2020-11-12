@@ -1115,6 +1115,8 @@ def get_stock_information(stock, country, as_json=False):
                     value = element.getnext().text_content().strip()
                     if value.__contains__('B'):
                         value = float(value.replace('B', '').replace(',', '')) * 1e9
+                    elif value.__contains__('M'):
+                        value = float(value.replace('M', '').replace(',', '')) * 1e6
                     elif value.__contains__('T'):
                         value = float(value.replace('T', '').replace(',', '')) * 1e12
                     result.at[0, title_] = value
